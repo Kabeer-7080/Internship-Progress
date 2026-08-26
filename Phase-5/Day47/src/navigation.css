@@ -1,3 +1,0 @@
-nav button,.sidebar-bottom>button{height:45px;padding:0 12px;display:flex;align-items:center;gap:12px;color:#65718a;font:600 14px DM Sans,Arial,sans-serif;border-radius:8px;cursor:pointer;border:0;background:transparent;width:100%;text-align:left}
-nav button.active{background:#edf4ff;color:#286ce8}
-@media(max-width:780px){.sidebar button{justify-content:center;padding:0}.sidebar button:not(.active){font-size:0}.sidebar button svg{width:18px;height:18px}.sidebar-bottom>button{display:none}}
