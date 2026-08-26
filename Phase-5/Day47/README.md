@@ -1,4 +1,4 @@
-# Day 46 — Student Management with Machine Learning Integration
+# Day 47 — Student Management with Machine Learning Integration
 
 A complete Student Management platform featuring MySQL CRUD database operations, React frontend, and a Scikit-Learn Machine Learning prediction engine served via Flask REST APIs.
 
