@@ -1,0 +1,97 @@
+/* FinGuard 2.0 — Neo-Fintech Kinetic Layer */
+
+body {
+  overflow-x: hidden;
+}
+
+/* Ambient Deep Atmospheric Lighting */
+body::after {
+  content: "";
+  position: fixed;
+  width: 75vmax;
+  height: 75vmax;
+  right: -30vmax;
+  top: -35vmax;
+  z-index: -1;
+  pointer-events: none;
+  background: conic-gradient(from 120deg, transparent 0deg, rgba(0, 240, 255, 0.15) 60deg, rgba(139, 92, 246, 0.2) 140deg, rgba(255, 42, 109, 0.15) 240deg, transparent 360deg);
+  filter: blur(60px);
+  animation: orbitGlow 28s linear infinite;
+}
+
+@keyframes orbitGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Header Live Status Indicator */
+header::before {
+  content: "LIVE · AI ENGINE V2.0";
+  position: absolute;
+  right: 210px;
+  top: 18px;
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+  padding: 2px 8px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  header::before {
+    display: none;
+  }
+}
+
+/* Shimmer Skeleton Loaders */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 25%, rgba(255, 255, 255, 0.09) 50%, rgba(255, 255, 255, 0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite ease-in-out;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Empty State Card */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  display: grid;
+  place-items: center;
+  gap: 12px;
+}
+
+.empty-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+  margin-bottom: 6px;
+}
+
+.empty-state h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  font-size: 13px;
+  max-width: 360px;
+}

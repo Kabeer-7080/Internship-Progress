@@ -1,0 +1,9 @@
+{
+  "pythonVersion": "3.12",
+  "pythonPlatform": "Windows",
+  "venvPath": "C:\\Users\\Kabeer\\AppData\\Local\\Programs\\Python",
+  "venv": "Python312",
+  "extraPaths": [
+    "./backend"
+  ]
+}
