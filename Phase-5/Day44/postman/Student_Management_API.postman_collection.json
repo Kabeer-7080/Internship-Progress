@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "a8f93e4b-7c12-4f32-901d-5821c9aef101",
+		"name": "Student Management API",
+		"description": "Postman Collection for testing the Day 45 Student Management REST API (Flask + MySQL)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. GET Students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Retrieves all students from MySQL database. Expects HTTP 200 OK."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Create Student - Valid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Neha Gupta\",\n  \"email\": \"neha@example.com\",\n  \"course\": \"Cyber Security\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Creates a new valid student in MySQL. Expects HTTP 201 Created."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Empty Name",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"\",\n  \"email\": \"test@example.com\",\n  \"course\": \"IT\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Sends an empty name string. Expects HTTP 400 Bad Request."
+			},
+			"response": []
+		},
+		{
+			"name": "4. Missing Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Test Student\",\n  \"course\": \"IT\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Omits email property from payload. Expects HTTP 400 Bad Request."
+			},
+			"response": []
+		},
+		{
+			"name": "5. Missing Course",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Test Student\",\n  \"email\": \"test@example.com\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Omits course property from payload. Expects HTTP 400 Bad Request."
+			},
+			"response": []
+		},
+		{
+			"name": "6. Empty JSON",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Sends an empty JSON object. Expects HTTP 400 Bad Request."
+			},
+			"response": []
+		},
+		{
+			"name": "7. No Request Body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Sends a POST request without any request body. Expects HTTP 400 Bad Request."
+			},
+			"response": []
+		},
+		{
+			"name": "8. Duplicate Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Another Student\",\n  \"email\": \"arun@example.com\",\n  \"course\": \"IT\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Attempts to insert an email that already exists in MySQL. Expects HTTP 409 Conflict."
+			},
+			"response": []
+		},
+		{
+			"name": "9. Invalid Endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/student",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"student"
+					]
+				},
+				"description": "Requests non-existent route GET /api/student. Expects HTTP 404 Not Found."
+			},
+			"response": []
+		},
+		{
+			"name": "10. Unsupported HTTP Method",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/students",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": "Sends unsupported DELETE request to /api/students. Expects HTTP 405 Method Not Allowed."
+			},
+			"response": []
+		}
+	]
+}
