@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Loan Risk · FinGuard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">F</span> FinGuard</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a class="active" href="loan.html">Loan Risk</a>
+      <a href="lookup.html">Fraud Lookup</a>
+    </nav>
+    <a class="nav-cta" href="lookup.html">Fraud lookup →</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Loan application form</span>
+    <h1>Score a loan application in <em>under a second.</em></h1>
+    <p>Fill the eight fields below and press analyze — the side panel reveals a risk verdict with the three biggest drivers.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <form class="form-shell" action="#result" method="get">
+
+      <!-- FORM -->
+      <div class="form-card">
+        <div class="form-legend">Applicant details</div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" placeholder="Aditi Sharma" />
+          </div>
+          <div class="form-field">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" placeholder="34" min="18" max="80" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="income">Annual income (USD)</label>
+            <input id="income" name="income" type="number" placeholder="72000" />
+          </div>
+          <div class="form-field">
+            <label for="employment">Employment</label>
+            <select id="employment" name="employment">
+              <option>Salaried — 3y+</option>
+              <option>Salaried — under 3y</option>
+              <option>Self-employed</option>
+              <option>Contract</option>
+              <option>Unemployed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="amount">Loan amount (USD)</label>
+            <input id="amount" name="amount" type="number" placeholder="24500" />
+          </div>
+          <div class="form-field">
+            <label for="term">Term (months)</label>
+            <select id="term" name="term">
+              <option>12</option><option>24</option><option selected>36</option><option>48</option><option>60</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="dti">Debt-to-income ratio</label>
+            <input id="dti" name="dti" type="number" step="0.01" placeholder="0.42" />
+            <small>0.00 – 1.00, lower is safer</small>
+          </div>
+          <div class="form-field">
+            <label for="credit">Credit tier</label>
+            <select id="credit" name="credit">
+              <option>A — excellent</option>
+              <option>B — good</option>
+              <option selected>C — fair</option>
+              <option>D — poor</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="purpose">Purpose of loan</label>
+          <textarea id="purpose" name="purpose" rows="3" placeholder="Home renovation, debt consolidation, medical expense…"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Analyze application <span class="arrow">→</span></button>
+          <button class="btn btn-ghost" type="reset">Reset</button>
+        </div>
+      </div>
+
+      <!-- SIDE PANEL -->
+      <aside class="side-panel" id="result">
+        <h4>Risk verdict</h4>
+
+        <!-- default empty -->
+        <div class="result-empty">
+          <div class="result-empty-icon">◔</div>
+          <p>Fill in the applicant details on the left and press <strong style="color:var(--accent)">Analyze</strong> — a live risk score appears here.</p>
+        </div>
+
+        <!-- shown only when URL has #result (after form submit) -->
+        <div class="result-view">
+          <span class="chip warn">Medium risk</span>
+          <div class="result-score">62<small style="font-size:14px; color:var(--text-mute); font-family:var(--mono)"> /100</small></div>
+          <div class="result-label">Probability of default · 0.38</div>
+          <div class="result-bar"><div class="result-bar-fill"></div></div>
+
+          <ul class="result-list">
+            <li><span>Top driver</span><span>DTI 0.42</span></li>
+            <li><span>Second driver</span><span>Credit tier C</span></li>
+            <li><span>Third driver</span><span>Loan/Income 0.34</span></li>
+            <li><span>Recommendation</span><span style="color:var(--warn)">Manual review</span></li>
+            <li><span>Confidence</span><span>91.4%</span></li>
+          </ul>
+
+          <div style="margin-top:24px; padding-top:20px; border-top:1px dashed var(--line); font-size:12px; color:var(--text-mute); font-family:var(--mono)">
+            Illustrative verdict · HTML/CSS preview
+          </div>
+        </div>
+      </aside>
+
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-note">
+      <span>© 2026 FinGuard</span>
+      <span>Static site · HTML &amp; CSS only</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinGuard | Loan Risk Calculator</title>
+    <meta name="description" content="Estimate your loan EMI and approval likelihood with FinGuard's rule-based loan risk calculator.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+    (function () {
+        try {
+            var theme = localStorage.getItem("finguard_theme") || "dark";
+            document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+    })();
+    </script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+
+            <span>FinGuard</span>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+            </li>
+
+            <li><a href="dashboard.html">Dashboard</a></li>
+
+            <li><a href="loan-calculator.html">Loan Calculator</a></li>
+
+            <li><a href="fraud-simulator.html">Fraud Check</a></li>
+
+            <li><a href="history.html">History</a></li>
+
+            <li><a href="profile.html">Profile</a></li>
+
+            <li><a href="#" id="logoutLink" class="btn-nav">Log Out</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<section class="tool-page">
+
+<div class="tool-header">
+<h1><i class="fa-solid fa-calculator" aria-hidden="true"></i> Loan Risk Calculator</h1>
+<p>Enter your details below to estimate your monthly EMI and loan approval likelihood, based on a simple rule-based model.</p>
+</div>
+
+<div class="tool-grid">
+
+<div class="tool-form-card">
+
+<h2>Applicant Details</h2>
+
+<form id="loanForm" novalidate>
+
+<div class="input-box">
+<label for="loanIncome">Monthly Income (₹)</label>
+<input type="number" id="loanIncome" name="income" placeholder="e.g. 50000" min="0" step="1" required>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="loanAmount">Loan Amount Requested (₹)</label>
+<input type="number" id="loanAmount" name="loanAmount" placeholder="e.g. 500000" min="0" step="1" required>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="loanTenure">Loan Tenure (months)</label>
+<input type="number" id="loanTenure" name="tenure" placeholder="e.g. 36" min="1" max="360" step="1" required>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="loanExistingEMI">Existing Monthly EMI / Debt (₹)</label>
+<input type="number" id="loanExistingEMI" name="existingEMI" placeholder="e.g. 5000 (enter 0 if none)" min="0" step="1" required>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="loanEmployment">Employment Type</label>
+<select id="loanEmployment" name="employment" required>
+<option value="">Select employment type</option>
+<option value="salaried">Salaried</option>
+<option value="self-employed">Self-Employed Professional</option>
+<option value="business">Business Owner</option>
+<option value="other">Other / Unemployed</option>
+</select>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="loanCreditScore">Credit Score (300–900)</label>
+<input type="number" id="loanCreditScore" name="creditScore" placeholder="e.g. 720" min="300" max="900" step="1" required>
+<small class="error"></small>
+</div>
+
+<button type="submit" class="register-btn">
+<i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+Calculate Risk
+</button>
+
+</form>
+
+</div>
+
+<div class="tool-result-card" id="loanResultCard">
+
+<h2>Result</h2>
+
+<div id="loanResultPlaceholder" class="tool-result-placeholder">
+<i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
+Fill in the form to see your estimated EMI and approval likelihood.
+</div>
+
+<div id="loanResultContent" style="display:none;">
+
+<div class="score-display">
+<div class="score-number" id="loanScoreNumber">0</div>
+<div class="score-label">Approval Score (out of 100)</div>
+<div id="loanRiskBadge" style="margin-top:14px;"></div>
+</div>
+
+<div class="result-breakdown">
+<div class="result-row"><span>Estimated Monthly EMI</span><span id="loanResultEMI">—</span></div>
+<div class="result-row"><span>Debt-to-Income Ratio</span><span id="loanResultDTI">—</span></div>
+<div class="result-row"><span>Loan-to-Annual-Income Ratio</span><span id="loanResultLTI">—</span></div>
+</div>
+
+<div class="result-recommendation" id="loanResultRecommendation"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

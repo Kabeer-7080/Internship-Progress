@@ -1,0 +1,21 @@
+Name,Department,Age,Marks,Attendance,Gender,City,Year,CGPA,Backlogs
+Arun,CSE,20,85,90,M,Chennai,2nd Year,8.2,0
+Priya,IT,21,92,95,F,Coimbatore,3rd Year,9.1,0
+Karthik,CSE,20,76,80,M,Madurai,2nd Year,7.4,1
+Meena,ECE,22,88,94,F,Trichy,3rd Year,8.6,0
+Rahul,IT,19,67,75,M,Salem,2nd Year,6.8,2
+Divya,CSE,21,95,98,F,Chennai,3rd Year,9.4,0
+Suresh,AI/DS,20,80,88,M,Erode,2nd Year,7.9,0
+Kavya,ECE,21,73,82,F,Vellore,3rd Year,7.2,1
+Vignesh,CSE,20,90,92,M,Chennai,2nd Year,8.8,0
+Anitha,IT,22,85,89,F,Coimbatore,3rd Year,8.3,0
+Bala,AI/DS,19,78,84,M,Madurai,2nd Year,7.6,0
+Deepa,ECE,21,91,96,F,Trichy,3rd Year,9.0,0
+Manoj,CSE,20,69,77,M,Salem,2nd Year,6.9,2
+Sneha,IT,22,87,90,F,Chennai,3rd Year,8.5,0
+Praveen,AI/DS,20,94,97,M,Erode,2nd Year,9.2,0
+Lakshmi,ECE,21,82,86,F,Vellore,3rd Year,8.0,0
+Ajay,CSE,19,75,81,M,Madurai,2nd Year,7.3,1
+Nithya,IT,20,88,91,F,Chennai,2nd Year,8.4,0
+Vishal,AI/DS,22,96,99,M,Coimbatore,3rd Year,9.5,0
+Pooja,ECE,20,71,79,F,Salem,2nd Year,7.0,1
