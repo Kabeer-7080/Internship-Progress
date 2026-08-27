@@ -1,1 +1,0 @@
-"""FinGuard FastAPI service."""
