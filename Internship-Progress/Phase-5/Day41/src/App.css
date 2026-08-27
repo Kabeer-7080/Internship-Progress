@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6fb;
+  color: #1f2937;
+}
+
+.portal {
+  min-height: 100vh;
+}
+
+header {
+  background: #18264a;
+  color: white;
+  padding: 35px 8%;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 38px;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: #d6dced;
+  font-size: 16px;
+}
+
+main {
+  width: 86%;
+  max-width: 1200px;
+  margin: 35px auto;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.section-title p {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #6b7280;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.section-title span {
+  display: block;
+  margin-top: 6px;
+  color: #6b7280;
+}
+
+.student-count {
+  background: white;
+  padding: 18px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.student-count strong {
+  display: block;
+  font-size: 28px;
+}
+
+.student-count small {
+  color: #6b7280;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+th {
+  background: #eef1f7;
+  padding: 18px;
+  text-align: left;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+td {
+  padding: 18px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 15px;
+}
+
+tr:hover {
+  background: #f8fafc;
+}
+
+.message {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.error {
+  color: #b91c1c;
+}
+
+@media (max-width: 700px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 12px 8px;
+  }
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Kabeer | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Mohamed.</div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Home -->
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <p class="hello">HELLO, I'M</p>
+
+                <h1>Mohamed <span>Kabeer</span></h1>
+
+                <h2>AI & Data Science Student</h2>
+
+                <p>
+                    I build intelligent applications, backend systems,
+                    and machine learning solutions using modern technologies.
+                </p>
+
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+
+            <div class="code-card">
+                <pre>
+const developer = {
+    name: "Mohamed Kabeer",
+    field: "AI & Data Science",
+    skills: [
+        "Python",
+        "Machine Learning",
+        "SQL",
+        "Node.js"
+    ]
+};
+                </pre>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="section">
+            <h2>About Me</h2>
+
+            <p>
+                I am an AI & Data Science student interested in
+                machine learning, data analysis, web development,
+                and database technologies.
+            </p>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <h2>My Skills</h2>
+
+            <div class="cards">
+                <div class="card">Python</div>
+                <div class="card">Machine Learning</div>
+                <div class="card">SQL</div>
+                <div class="card">Node.js</div>
+                <div class="card">Data Science</div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <h2>My Projects</h2>
+
+            <div class="project-container">
+
+                <div class="project-card">
+                    <h3>E-Commerce Analysis</h3>
+                    <p>
+                        Analyzed online shopping data using
+                        Python and machine learning.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Vehicle Image Classification</h3>
+                    <p>
+                        Classified vehicle images using
+                        a Convolutional Neural Network.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section contact">
+            <h2>Let's Connect</h2>
+
+            <p>Have a project or question? Send me a message.</p>
+
+            <form id="contactForm">
+
+                <div class="form-row">
+
+                    <div>
+                        <label>Your Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label>Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <label>Message</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+                <button type="submit">Send Message →</button>
+
+                <p id="responseMessage"></p>
+
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Mohamed Kabeer. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

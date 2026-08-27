@@ -1,0 +1,557 @@
+/* =====================
+   GOOGLE FONT & RESET
+===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f8fc;
+    color:#333;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+
+header{
+    width:100%;
+    background:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.navbar{
+    width:90%;
+    margin:auto;
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo i{
+    color:#2563eb;
+    font-size:30px;
+}
+
+.logo h2{
+    color:#2563eb;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#444;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.login-btn{
+    padding:12px 28px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    background:#1747c5;
+}
+
+/* =====================
+   HERO
+===================== */
+
+.hero{
+    width:90%;
+    margin:70px auto;
+    display:grid;
+    grid-template-columns:1fr 400px;
+    gap:60px;
+    align-items:center;
+}
+
+.hero-tag{
+    color:#2563eb;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.hero-text{
+    color:#666;
+    margin-bottom:30px;
+    font-size:17px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+}
+
+.primary-btn{
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:40px;
+    transition:.3s;
+}
+
+.secondary-btn{
+    background:white;
+    color:#2563eb;
+    border:2px solid #2563eb;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:40px;
+    transition:.3s;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-5px);
+}
+
+.score-card{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.score-card h4{
+    color:#777;
+}
+
+.score-card h2{
+    font-size:65px;
+    color:#2563eb;
+    margin:15px 0;
+}
+
+/* =====================
+   STATS
+===================== */
+
+.stats{
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.stat-card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+}
+
+.icon{
+    width:65px;
+    height:65px;
+    background:#2563eb;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.icon i{
+    color:white;
+    font-size:26px;
+}
+
+.stat-card h2{
+    margin-bottom:5px;
+}
+
+/* =====================
+   ANALYTICS
+===================== */
+
+.analytics{
+    width:90%;
+    margin:80px auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.analytics-left,
+.analytics-right{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+}
+
+.analytics-left h2,
+.analytics-right h2{
+    margin-bottom:10px;
+}
+
+.graph{
+    height:320px;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:flex-end;
+    margin-top:30px;
+    background:#eef4ff;
+    border-radius:15px;
+    padding:20px;
+}
+
+.bar{
+    width:45px;
+    background:linear-gradient(to top,#2563eb,#60a5fa);
+    border-radius:10px 10px 0 0;
+    transition:.3s;
+}
+
+.bar:hover{
+    transform:scaleY(1.08);
+}
+
+.product-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:20px 0;
+}
+
+.product-card img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.report-btn{
+    display:block;
+    margin-top:30px;
+    text-align:center;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:14px;
+    border-radius:12px;
+}
+/* ================= PERFORMANCE ================= */
+
+.performance{
+    width:90%;
+    margin:80px auto;
+}
+
+.performance h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:36px;
+}
+
+.performance-box{
+    background:#fff;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.input-box{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-box label{
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.input-box input,
+.input-box select{
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+.generate-btn{
+    grid-column:1/-1;
+    padding:16px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:#fff;
+    cursor:pointer;
+    font-size:17px;
+    transition:.3s;
+}
+
+.generate-btn:hover{
+    background:#1747c5;
+}
+
+/* ================= INSIGHTS ================= */
+
+.insights{
+    width:90%;
+    margin:80px auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.insight-card{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+}
+
+.insight-card h2{
+    margin-bottom:20px;
+}
+
+.insight-card ul{
+    padding-left:20px;
+}
+
+.insight-card li{
+    margin-bottom:15px;
+}
+
+.insight-card table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.insight-card th{
+    background:#2563eb;
+    color:#fff;
+    padding:14px;
+}
+
+.insight-card td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    text-align:center;
+}
+
+/* ================= REVIEWS ================= */
+
+.reviews{
+    width:90%;
+    margin:80px auto;
+}
+
+.reviews h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.review-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.review{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.review:hover{
+    transform:translateY(-10px);
+}
+
+.review h3{
+    color:#f59e0b;
+    margin-bottom:15px;
+}
+
+.review h4{
+    color:#2563eb;
+    margin-top:20px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    width:90%;
+    margin:80px auto;
+    text-align:center;
+}
+
+.contact h2{
+    margin-bottom:20px;
+}
+
+.contact p{
+    margin:10px 0;
+    color:#666;
+    font-size:17px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    margin-top:70px;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer h2{
+    margin-bottom:15px;
+}
+
+footer p{
+    margin-top:10px;
+    color:#cbd5e1;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+.hero{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.analytics{
+    grid-template-columns:1fr;
+}
+
+.performance-box{
+    grid-template-columns:1fr;
+}
+
+.insights{
+    grid-template-columns:1fr;
+}
+
+.review-container{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    height:auto;
+    padding:20px;
+}
+
+.nav-links{
+    flex-direction:column;
+    align-items:center;
+    margin:20px 0;
+}
+
+.hero h1{
+    font-size:38px;
+}
+
+.hero-buttons{
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.stats{
+    grid-template-columns:1fr;
+}
+
+.stat-card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.graph{
+    height:250px;
+}
+
+.bar{
+    width:30px;
+}
+
+}
+
+@media(max-width:480px){
+
+.hero h1{
+    font-size:30px;
+}
+
+.performance h2,
+.reviews h2,
+.contact h2{
+    font-size:28px;
+}
+
+.primary-btn,
+.secondary-btn,
+.login-btn{
+    padding:12px 20px;
+}
+
+}

@@ -1,0 +1,10 @@
+.env
+*.env
+__pycache__/
+*.pyc
+finguard.db
+node_modules/
+dist/
+.venv/
+.idea/
+.vscode/

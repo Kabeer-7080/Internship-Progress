@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinGuard | Smart Loan & Fraud Risk Analyzer</title>
+    <meta name="description" content="FinGuard is an AI-inspired platform for smart loan analysis and fraud risk detection, offering secure registration and instant risk insights.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+    // Apply the saved theme before the page paints, to avoid a flash
+    // of the wrong theme on load.
+    (function () {
+        try {
+            var theme = localStorage.getItem("finguard_theme") || "dark";
+            document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+    })();
+    </script>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>FinGuard</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+            </li>
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="#features">Features</a></li>
+
+            <li><a href="#about">About</a></li>
+
+            <li><a href="login.html">Sign In</a></li>
+
+            <li>
+                <a href="register.html" class="btn-nav">
+                    Register
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Smart Loan &
+            <span>Fraud Risk Analyzer</span>
+        </h1>
+
+        <p>
+
+            Secure your financial decisions with AI-powered
+            loan analysis and fraud detection.
+
+            Experience a modern platform designed for
+            faster, safer and smarter lending.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="register.html" class="btn-primary">
+                Get Started
+            </a>
+
+            <a href="#features" class="btn-secondary">
+                Explore
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <h2>Live Analysis</h2>
+
+        <div class="status">
+
+            <div>
+                <h3>98.7%</h3>
+                <p>Prediction Accuracy</p>
+            </div>
+
+            <div>
+                <h3>2.1 Sec</h3>
+                <p>Average Analysis</p>
+            </div>
+
+            <div>
+                <h3>24/7</h3>
+                <p>System Monitoring</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features" id="features">
+
+<h2>Powerful Features</h2>
+
+<div class="feature-container">
+
+<div class="card">
+
+<i class="fa-solid fa-brain" aria-hidden="true"></i>
+
+<h3>AI Loan Analysis</h3>
+
+<p>
+Evaluate loan applications intelligently using
+machine learning based analysis.
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+
+<h3>Fraud Detection</h3>
+
+<p>
+
+Identify suspicious transactions and
+reduce financial fraud risks.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-lock" aria-hidden="true"></i>
+
+<h3>Secure Platform</h3>
+
+<p>
+
+Strong client-side validation and
+secure user registration experience.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+
+<h3>Instant Insights</h3>
+
+<p>
+
+View intelligent risk indicators
+through an elegant dashboard.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+<h2>About FinGuard</h2>
+
+<p>
+
+FinGuard is a modern AI-inspired frontend platform
+designed to streamline loan applications and assist
+users by presenting intelligent risk analysis in a
+professional, responsive, and user-friendly interface.
+
+</p>
+
+</section>
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+<h2>Ready to Experience FinGuard?</h2>
+
+<p>
+
+Create your account and explore a smarter
+approach to loan risk assessment.
+
+</p>
+
+<a href="register.html">
+
+Register Now
+
+</a>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+
+© 2026 FinGuard • Smart Loan & Fraud Risk Analyzer
+
+</p>
+
+<p>
+
+Built using HTML • CSS • JavaScript
+
+</p>
+
+</footer>
+
+</body>
+</html>

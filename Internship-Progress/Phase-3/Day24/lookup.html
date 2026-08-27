@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Fraud Lookup · FinGuard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">F</span> FinGuard</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="loan.html">Loan Risk</a>
+      <a class="active" href="lookup.html">Fraud Lookup</a>
+    </nav>
+    <a class="nav-cta" href="loan.html">Loan risk →</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Transaction lookup</span>
+    <h1>Paste a transaction. See what's <em>hiding</em>.</h1>
+    <p>Every row shows the amount, the merchant, a risk score, and a chip that reads clean, review, or fraud at a glance.</p>
+  </div>
+</section>
+
+<section style="padding: 40px 0 120px">
+  <div class="container">
+
+    <form class="lookup-search" action="#" method="get">
+      <input type="text" placeholder="TXN-0000...  or  account @handle" />
+      <button class="btn btn-primary" type="submit">Scan</button>
+    </form>
+
+    <table class="txn-table">
+      <thead>
+        <tr>
+          <th>Txn ID</th>
+          <th>Amount</th>
+          <th>Merchant</th>
+          <th>Country</th>
+          <th>Score</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TXN-40182-A</td><td>$ 4,821.00</td><td>lux-goods.io</td><td>MT</td>
+          <td>0.94</td><td><span class="chip danger">Fraud</span></td>
+        </tr>
+        <tr>
+          <td>TXN-40183-B</td><td>$ 128.40</td><td>whole-foods</td><td>US</td>
+          <td>0.08</td><td><span class="chip ok">Clean</span></td>
+        </tr>
+        <tr>
+          <td>TXN-40184-C</td><td>$ 2,200.00</td><td>xchange-node</td><td>RU</td>
+          <td>0.71</td><td><span class="chip warn">Review</span></td>
+        </tr>
+        <tr>
+          <td>TXN-40185-D</td><td>$ 79.99</td><td>spotify</td><td>US</td>
+          <td>0.03</td><td><span class="chip ok">Clean</span></td>
+        </tr>
+        <tr>
+          <td>TXN-40186-E</td><td>$ 12,900.00</td><td>anon-wallet-3f</td><td>—</td>
+          <td>0.98</td><td><span class="chip danger">Fraud</span></td>
+        </tr>
+        <tr>
+          <td>TXN-40187-F</td><td>$ 340.10</td><td>uber</td><td>IN</td>
+          <td>0.11</td><td><span class="chip ok">Clean</span></td>
+        </tr>
+        <tr>
+          <td>TXN-40188-G</td><td>$ 1,150.00</td><td>giftcard-hub</td><td>NG</td>
+          <td>0.66</td><td><span class="chip warn">Review</span></td>
+        </tr>
+        <tr>
+          <td>TXN-40189-H</td><td>$ 22.00</td><td>netflix</td><td>US</td>
+          <td>0.02</td><td><span class="chip ok">Clean</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px">
+      <div class="stack-item">
+        <div class="k">Flagged today</div>
+        <div class="v">27</div>
+      </div>
+      <div class="stack-item">
+        <div class="k">Under review</div>
+        <div class="v">64</div>
+      </div>
+      <div class="stack-item">
+        <div class="k">Cleared</div>
+        <div class="v">1,204</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-note">
+      <span>© 2026 FinGuard</span>
+      <span>Static site · HTML &amp; CSS only</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

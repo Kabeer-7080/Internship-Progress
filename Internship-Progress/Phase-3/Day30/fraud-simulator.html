@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinGuard | Fraud Risk Simulator</title>
+    <meta name="description" content="Run a mock transaction through FinGuard's rule-based fraud risk simulator.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+    (function () {
+        try {
+            var theme = localStorage.getItem("finguard_theme") || "dark";
+            document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+    })();
+    </script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+
+            <span>FinGuard</span>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+            </li>
+
+            <li><a href="dashboard.html">Dashboard</a></li>
+
+            <li><a href="loan-calculator.html">Loan Calculator</a></li>
+
+            <li><a href="fraud-simulator.html">Fraud Check</a></li>
+
+            <li><a href="history.html">History</a></li>
+
+            <li><a href="profile.html">Profile</a></li>
+
+            <li><a href="#" id="logoutLink" class="btn-nav">Log Out</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<section class="tool-page">
+
+<div class="tool-header">
+<h1><i class="fa-solid fa-user-shield" aria-hidden="true"></i> Fraud Risk Simulator</h1>
+<p>Enter mock transaction details to see how a rule-based fraud detection model would score it.</p>
+</div>
+
+<div class="tool-grid">
+
+<div class="tool-form-card">
+
+<h2>Transaction Details</h2>
+
+<form id="fraudForm" novalidate>
+
+<div class="input-box">
+<label for="fraudAmount">Transaction Amount (₹)</label>
+<input type="number" id="fraudAmount" name="amount" placeholder="e.g. 15000" min="0" step="1" required>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="fraudType">Transaction Type</label>
+<select id="fraudType" name="type" required>
+<option value="">Select transaction type</option>
+<option value="online">Online Purchase</option>
+<option value="pos">In-Store (POS)</option>
+<option value="atm">ATM Withdrawal</option>
+<option value="wire">Wire Transfer</option>
+</select>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="fraudLocation">Transaction Location</label>
+<select id="fraudLocation" name="location" required>
+<option value="">Select location type</option>
+<option value="domestic">Domestic</option>
+<option value="international">International</option>
+</select>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="fraudDevice">Device Recognition</label>
+<select id="fraudDevice" name="device" required>
+<option value="">Select device status</option>
+<option value="recognized">Recognized Device</option>
+<option value="new">New / Unrecognized Device</option>
+</select>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="fraudHour">Hour of Transaction (0–23)</label>
+<input type="number" id="fraudHour" name="hour" placeholder="e.g. 14 for 2 PM" min="0" max="23" step="1" required>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="fraudVelocity">Transactions in Last 24 Hours (including this one)</label>
+<input type="number" id="fraudVelocity" name="velocity" placeholder="e.g. 2" min="1" max="100" step="1" required>
+<small class="error"></small>
+</div>
+
+<div class="input-box">
+<label for="fraudAccountAge">Account Age (months)</label>
+<input type="number" id="fraudAccountAge" name="accountAge" placeholder="e.g. 18" min="0" max="1200" step="1" required>
+<small class="error"></small>
+</div>
+
+<button type="submit" class="register-btn">
+<i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+Run Fraud Check
+</button>
+
+</form>
+
+</div>
+
+<div class="tool-result-card" id="fraudResultCard">
+
+<h2>Result</h2>
+
+<div id="fraudResultPlaceholder" class="tool-result-placeholder">
+<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+Fill in the form to see the transaction's fraud risk score.
+</div>
+
+<div id="fraudResultContent" style="display:none;">
+
+<div class="score-display">
+<div class="score-number" id="fraudScoreNumber">0</div>
+<div class="score-label">Fraud Risk Score (out of 100)</div>
+<div id="fraudRiskBadge" style="margin-top:14px;"></div>
+</div>
+
+<div class="result-breakdown" id="fraudResultBreakdown"></div>
+
+<div class="result-recommendation" id="fraudResultRecommendation"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
