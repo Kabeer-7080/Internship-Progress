@@ -1,5 +1,5 @@
 [phases.install]
-cmds = ["pip install --no-cache-dir -r requirements.txt"]
+cmds = ["npm ci"]
 
 [start]
-cmd = "python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+cmd = "npm run preview -- --host 0.0.0.0 --port $PORT"
