@@ -151,6 +151,38 @@ def _sanitize_database_url(raw_url: str) -> str:
     return url
 
 
+def _sqlite_database_path() -> Path:
+    """Use Railway's mounted volume for SQLite when available."""
+    configured_path = os.getenv("SQLITE_DB_PATH", "").strip()
+    mount_path = os.getenv("RAILWAY_VOLUME_MOUNT_PATH", "").strip()
+    legacy_path = BASE_DIR / "finguard.db"
+
+    if configured_path:
+        sqlite_path = Path(configured_path)
+    elif mount_path:
+        sqlite_path = Path(mount_path) / "finguard.db"
+    else:
+        sqlite_path = legacy_path
+
+    sqlite_path.parent.mkdir(parents=True, exist_ok=True)
+    # Preserve the existing SQLite database when a volume is first attached.
+    if sqlite_path != legacy_path and not sqlite_path.exists() and legacy_path.exists():
+        import shutil
+        shutil.copy2(legacy_path, sqlite_path)
+        logger.info("Copied the existing SQLite database to persistent storage.")
+
+    return sqlite_path
+
+
+def _create_sqlite_engine():
+    sqlite_path = _sqlite_database_path()
+    logger.info(f"Using SQLite database at {sqlite_path}")
+    return create_engine(
+        f"sqlite:///{sqlite_path}",
+        connect_args={"check_same_thread": False}
+    )
+
+
 def get_engine():
     """Initialize the database engine supporting Railway MySQL, TCP MySQL, and SQLite fallback."""
     global active_db_type, _db_connect_error
@@ -192,12 +224,7 @@ def get_engine():
     # 2. Explicit SQLite configured
     if DB_ENGINE_CONFIG == "sqlite":
         active_db_type = "sqlite"
-        sqlite_path = BASE_DIR / "finguard.db"
-        logger.info(f"Using SQLite database at {sqlite_path}")
-        return create_engine(
-            f"sqlite:///{sqlite_path}",
-            connect_args={"check_same_thread": False}
-        )
+        return _create_sqlite_engine()
 
     # 3. Standard / Railway MySQL TCP Connection via DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
     mysql_url = (
@@ -233,11 +260,7 @@ def get_engine():
             f"Could not connect to MySQL ({e}). Falling back to SQLite for continuous operation."
         )
         active_db_type = "sqlite_fallback"
-        sqlite_path = BASE_DIR / "finguard.db"
-        return create_engine(
-            f"sqlite:///{sqlite_path}",
-            connect_args={"check_same_thread": False}
-        )
+        return _create_sqlite_engine()
 
 
 def create_database_if_not_exists():
