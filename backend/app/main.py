@@ -387,9 +387,10 @@ def predict_risk(body: AssessmentRequest):
 # --- Auth Routes ---
 @app.post("/auth/register", status_code=201)
 def register(body: RegisterRequest, db: Session = Depends(get_db)):
+    email = body.email.strip().lower()
     existing = (
         db.query(UserModel)
-        .filter(UserModel.email == body.email)
+        .filter(UserModel.email == email)
         .first()
     )
     if existing:
@@ -400,7 +401,7 @@ def register(body: RegisterRequest, db: Session = Depends(get_db)):
     user = UserModel(
         id=str(uuid4()),
         name=body.name,
-        email=body.email,
+        email=email,
         password_hash=generate_password_hash(body.password),
         role="Analyst"
     )
@@ -423,9 +424,10 @@ def register(body: RegisterRequest, db: Session = Depends(get_db)):
 
 @app.post("/auth/login", response_model=TokenResponse)
 def login(body: LoginRequest, db: Session = Depends(get_db)):
+    email = body.email.strip().lower()
     user = (
         db.query(UserModel)
-        .filter(UserModel.email == body.email)
+        .filter(UserModel.email == email)
         .first()
     )
     if not user or not verify_password(body.password, user.password_hash):
