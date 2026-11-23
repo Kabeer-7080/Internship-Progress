@@ -8,7 +8,7 @@ class RegisterRequest(BaseModel):
     name: str = Field(min_length=2, max_length=80)
     email: EmailStr
     password: str = Field(min_length=4, max_length=128)
-    role: str = 'Analyst'
+    # New accounts are always Analysts; roles cannot be chosen by registrants.
 
 class LoginRequest(BaseModel):
     email: EmailStr
