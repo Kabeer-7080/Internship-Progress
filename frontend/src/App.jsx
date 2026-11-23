@@ -502,9 +502,8 @@ function localCalculateAssessment(data, count) {
 function Login({ onLogin }) {
   const [mode, setMode] = useState("login");
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("analyst@finguard.io");
-  const [password, setPassword] = useState("password");
-  const [role, setRole] = useState("Analyst");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   async function submit(e) {
@@ -523,7 +522,7 @@ function Login({ onLogin }) {
           setSubmitting(false);
           return;
         }
-        res = await registerApi(name, email, password, role);
+        res = await registerApi(name, email, password, "Analyst");
       } else {
         res = await loginApi(email, password);
       }
@@ -538,11 +537,6 @@ function Login({ onLogin }) {
       setSubmitting(false);
     }
   }
-  function fillDemo(userEmail) {
-    setEmail(userEmail);
-    setPassword("password");
-    setError("");
-  }
   return <div className="login">
       <div className="login-card">
         <Brand />
@@ -552,12 +546,11 @@ function Login({ onLogin }) {
         
         <form onSubmit={submit} style={{ marginTop: "24px" }}>
           {mode === "signup" && <div className="form-grid one" style={{ gap: "14px", marginBottom: "14px" }}>
-              <label>Full name<input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Maya Chen" /></label>
-              <label>Role<select value={role} onChange={(e) => setRole(e.target.value)}><option>Analyst</option><option>Admin</option></select></label>
+              <label>Full name<input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Maya Chen" autoComplete="name" required /></label>
             </div>}
           <div className="form-grid one" style={{ gap: "14px" }}>
-            <label>Work email<input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="name@company.com" /></label>
-            <label>Password<input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="••••••••" /></label>
+            <label>Work email<input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="name@company.com" autoComplete="email" required /></label>
+            <label>Password<input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="••••••••" autoComplete={mode === "signup" ? "new-password" : "current-password"} required /></label>
           </div>
           
           {error && <div className="form-error"><AlertCircle size={15} /><span>{error}</span></div>}
@@ -568,18 +561,14 @@ function Login({ onLogin }) {
           </button>
         </form>
 
-        <div className="demo-pills">
-          <div className="demo-pill" onClick={() => fillDemo("analyst@finguard.io")}>
-            ⚡ Analyst Demo
-          </div>
-          <div className="demo-pill" onClick={() => fillDemo("admin@finguard.io")}>
-            🛡️ Admin Demo
-          </div>
-        </div>
+        <p className="muted" style={{ textAlign: "center", marginTop: "16px", fontSize: "13px" }}>
+          {mode === "login" ? "New here? Create an account to get started." : "New accounts are created with the Analyst role."}
+        </p>
 
         <button
     className="link"
     style={{ width: "100%", justifyContent: "center", marginTop: "20px", color: "var(--text-secondary)" }}
+    type="button"
     onClick={() => {
       setMode(mode === "login" ? "signup" : "login");
       setError("");
