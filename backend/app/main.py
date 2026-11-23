@@ -1,4 +1,5 @@
 import os
+import secrets
 from datetime import datetime, timedelta, timezone
 from typing import List
 from uuid import uuid4
@@ -77,9 +78,7 @@ def health_check():
 
 bearer_scheme = HTTPBearer()
 
-SECRET = os.getenv(
-    "JWT_SECRET", "super-secret-finguard-key-change-in-production"
-)
+SECRET = os.getenv("JWT_SECRET") or secrets.token_urlsafe(32)
 ALGORITHM = "HS256"
 risk_engine = RiskEngine()
 
@@ -87,6 +86,8 @@ risk_engine = RiskEngine()
 # --- Database Auto-Seeding on Startup ---
 @app.on_event("startup")
 def startup_db_seed():
+    if os.getenv("ENVIRONMENT", "development").lower() == "production":
+        return
     db = next(get_db())
     try:
         if not db.query(UserModel).first():
@@ -401,7 +402,7 @@ def register(body: RegisterRequest, db: Session = Depends(get_db)):
         name=body.name,
         email=body.email,
         password_hash=generate_password_hash(body.password),
-        role=body.role
+        role="Analyst"
     )
     db.add(user)
     db.commit()
@@ -547,6 +548,7 @@ def list_assessments(
 ):
     items = (
         db.query(AssessmentModel)
+        .filter(AssessmentModel.user_id == user.id)
         .order_by(AssessmentModel.created_at.desc())
         .all()
     )
@@ -562,7 +564,7 @@ def get_assessment(
 ):
     item = (
         db.query(AssessmentModel)
-        .filter(AssessmentModel.id == assessment_id)
+        .filter(AssessmentModel.id == assessment_id, AssessmentModel.user_id == user.id)
         .first()
     )
     if not item:
@@ -580,7 +582,7 @@ def update_assessment(
 ):
     item = (
         db.query(AssessmentModel)
-        .filter(AssessmentModel.id == assessment_id)
+        .filter(AssessmentModel.id == assessment_id, AssessmentModel.user_id == user.id)
         .first()
     )
     if not item:
@@ -636,7 +638,7 @@ def delete_assessment(
 ):
     item = (
         db.query(AssessmentModel)
-        .filter(AssessmentModel.id == assessment_id)
+        .filter(AssessmentModel.id == assessment_id, AssessmentModel.user_id == user.id)
         .first()
     )
     if not item:
@@ -648,6 +650,10 @@ def delete_assessment(
 
 
 # --- Protected Team CRUD Routes ---
+def require_admin(user: UserModel):
+    if user.role != "Admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+
 
 # 1. READ Team Members
 @app.get("/team", response_model=List[TeamMemberResponse])
@@ -655,6 +661,7 @@ def get_team(
     user: UserModel = Depends(current_user),
     db: Session = Depends(get_db)
 ):
+    require_admin(user)
     return db.query(TeamMemberModel).all()
 
 
@@ -665,6 +672,7 @@ def add_team_member(
     user: UserModel = Depends(current_user),
     db: Session = Depends(get_db)
 ):
+    require_admin(user)
     existing = (
         db.query(TeamMemberModel)
         .filter(TeamMemberModel.email == body.email)
@@ -697,6 +705,7 @@ def update_team_member(
     user: UserModel = Depends(current_user),
     db: Session = Depends(get_db)
 ):
+    require_admin(user)
     member = (
         db.query(TeamMemberModel)
         .filter(TeamMemberModel.id == member_id)
@@ -726,6 +735,7 @@ def delete_team_member(
     user: UserModel = Depends(current_user),
     db: Session = Depends(get_db)
 ):
+    require_admin(user)
     member = (
         db.query(TeamMemberModel)
         .filter(TeamMemberModel.id == member_id)
