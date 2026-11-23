@@ -197,23 +197,13 @@ function App() {
         setDbTelemetry(health.info);
       }
 
-      // Restore and validate an existing session after a page refresh.
+      // Validate the token independently from optional workspace data.
+      // A permission error while loading an admin-only page must not sign out
+      // an otherwise valid Analyst session.
       if (backendOnline && token) {
+        let user;
         try {
-          const user = await meApi();
-          if (cancelled) return;
-          setCurrentUser(user);
-          localStorage.setItem("fg-user", JSON.stringify(user));
-          setLoggedIn(true);
-
-          const [apiAssessments, apiTeam] = await Promise.all([
-            fetchAssessmentsApi(),
-            fetchTeamApi()
-          ]);
-          if (!cancelled) {
-            if (Array.isArray(apiAssessments)) setAssessments(apiAssessments);
-            if (Array.isArray(apiTeam)) setTeam(apiTeam);
-          }
+          user = await meApi();
         } catch (e) {
           if (!cancelled) {
             setToken(null);
@@ -222,6 +212,31 @@ function App() {
             setCurrentUser(null);
             localStorage.removeItem("fg-user");
           }
+          return;
+        }
+        if (cancelled) return;
+        setCurrentUser(user);
+        localStorage.setItem("fg-user", JSON.stringify(user));
+        setLoggedIn(true);
+
+        try {
+          const apiAssessments = await fetchAssessmentsApi();
+          if (!cancelled && Array.isArray(apiAssessments)) {
+            setAssessments(apiAssessments);
+          }
+        } catch (e) {
+          console.warn("Could not load assessments:", e);
+        }
+
+        if (user.role === "Admin") {
+          try {
+            const apiTeam = await fetchTeamApi();
+            if (!cancelled && Array.isArray(apiTeam)) setTeam(apiTeam);
+          } catch (e) {
+            console.warn("Could not load team members:", e);
+          }
+        } else if (!cancelled) {
+          setTeam([]);
         }
       }
     }
@@ -596,7 +611,7 @@ function Sidebar({ page, setPage, count, signOut, dbActive, currentUser }) {
     ["Overview", LayoutDashboard],
     ["Assessments", ClipboardList, String(count)],
     ["Transactions", WalletCards],
-    ["Team", Users],
+    ...(currentUser?.role === "Admin" ? [["Team", Users]] : []),
     ["Settings", Settings]
   ];
   return <aside>
