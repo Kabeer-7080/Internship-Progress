@@ -1,6 +1,6 @@
 "use strict"
 const configuredApiBase = import.meta.env?.VITE_API_BASE_URL?.trim();
-const productionApiBase = "https://internship-progress-production.up.railway.app";
+const productionApiBase = "https://finguard-backend-production-0a6ff761.up.railway.app";
 export const API_BASE = configuredApiBase || (import.meta.env.PROD ? productionApiBase : "http://127.0.0.1:8000");
 
 const TOKEN_STORAGE_KEY = "fg-token";
